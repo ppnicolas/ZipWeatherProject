@@ -9,7 +9,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ActivityMain extends AppCompatActivity {
+import java.util.List;
+
+public class ActivityMain extends AppCompatActivity
+        implements ActivityMainInterface.ViewInterface{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,5 +51,25 @@ public class ActivityMain extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void getWeatherInfoClick(String value, String type) {
+
+    }
+
+    @Override
+    public void updateRecentSearches(List<WeatherInfo> list) {
+
+    }
+
+    @Override
+    public void clearRecentSearchesClick() {
+
+    }
+
+    @Override
+    public void showToastMessage(String message) {
+
     }
 }

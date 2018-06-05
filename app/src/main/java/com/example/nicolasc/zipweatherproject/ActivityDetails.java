@@ -7,7 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class ActivityDetails extends AppCompatActivity {
+public class ActivityDetails extends AppCompatActivity
+        implements ActivityDetailsInterface.ViewInterface{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,4 +27,23 @@ public class ActivityDetails extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void showWeatherInfo(WeatherInfo info) {
+
+    }
+
+    @Override
+    public void showHomeClick() {
+
+    }
+
+    @Override
+    public void addToFavoritesClick() {
+
+    }
+
+    @Override
+    public void showToastMessage(String message) {
+
+    }
 }
