@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ZipWeatherProject</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_details">ActivityDetails</string>
+    <string name="get_current_weather_conditions_of_zip_codes_in_usa">Get Current Weather Conditions from ZIP Codes in USA</string>
+    <string name="zip_code">ZIP Code</string>
+    <string name="recent_searches">Recent Searches</string>
+</resources>
