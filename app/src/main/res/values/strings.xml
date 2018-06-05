@@ -5,4 +5,11 @@
     <string name="get_current_weather_conditions_of_zip_codes_in_usa">Get Current Weather Conditions from ZIP Codes in USA</string>
     <string name="zip_code">ZIP Code</string>
     <string name="recent_searches">Recent Searches</string>
+    <string name="weather">WEATHER</string>
+    <string name="wind_speed">Wind Speed</string>
+    <string name="claudiness">Claudiness</string>
+    <string name="pressure">Pressure</string>
+    <string name="humidity">Humidity</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
 </resources>
