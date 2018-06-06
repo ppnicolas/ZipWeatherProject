@@ -20,7 +20,7 @@ public class WeatherSearchesList {
         //zipSearchesList.removeIf(w -> w.getCityId().equals(info.getCityId()) );
 
         for( int i = zipSearchesList.size()-1; i >= 0; i-- ){
-            if (zipSearchesList.get(i).getCityId().equals(info.getCityId())){
+            if (zipSearchesList.get(i).getCityName().equals(info.getCityName())){
                 zipSearchesList.remove(i);
             }
         }

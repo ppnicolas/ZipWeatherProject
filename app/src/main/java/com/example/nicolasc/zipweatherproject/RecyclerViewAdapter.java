@@ -48,18 +48,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Log.d("WHEATHER", "++++++ onCreateViewHolder position=" + position);
 
         //Setting text views
-        holder.textZipCity.setText(info.getZipAndCity());
+        holder.textZipCity.setText(info.getCityName());
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Log.d("WHEATHER", "++++++ OnClickListener zip=" + info.getZipAndCity());
+                Log.d("WHEATHER", "++++++ OnClickListener city=" + info.getCityName());
 
                 Intent intent = new Intent(view.getContext(), ActivityDetails.class);
 
                 Bundle bundle = new Bundle();
-                bundle.putString("cityId", info.getCityId());
+                bundle.putString("value", info.getCityId());
+                bundle.putString("type", "city");
 
                 intent.putExtras(bundle);
                 context.startActivity(intent);

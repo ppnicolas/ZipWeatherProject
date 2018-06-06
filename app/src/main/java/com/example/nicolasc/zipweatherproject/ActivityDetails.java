@@ -123,7 +123,7 @@ public class ActivityDetails extends AppCompatActivity
 
     @Override
     public void showWeatherInfo(WeatherInfo info) {
-        getSupportActionBar().setTitle(info.getZipAndCity());
+        getSupportActionBar().setTitle(info.getCityName());
 
         textConditions.setText(info.getWeatherConditions());
         textDescription.setText(info.getWeatherDescription());

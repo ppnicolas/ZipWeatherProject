@@ -25,17 +25,9 @@ public class ActivityDetailsPresenterImpl
     }
 
     @Override
-    public void getWeatherInfo(String zipCode, String requestType) {
-        WeatherInfo info = null;
+    public void getWeatherInfo(String value, String requestType) {
 
-        if ("zip".equals(requestType)) {
-
-            
-
-        }
-
-        AppGlobals.getInstance().addToRecentSearchesList(info);
-        detailsActivityView.showWeatherInfo( info );
+        new WeatherHttpGetConditionsAsync( this.detailsActivityView ).execute( value, requestType );
     }
 
     @Override

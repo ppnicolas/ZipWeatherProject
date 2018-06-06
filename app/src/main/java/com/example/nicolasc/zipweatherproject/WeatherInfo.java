@@ -52,21 +52,16 @@ public class WeatherInfo {
     public Pair<Double, Double> getLocation() {
         return new Pair(latitude, longitude);    }
 
-    public String getCityName() {
-        return cityName;
-    }
-
     public String getCityId() {
         return cityId;
     }
 
     public String getWeatherDescription() {
-        return "this is the wheather current cinditions description" +
-                "it include max, min Temp, wind spped mph direction...";
+        return currDescription;
     }
 
-    public String getZipAndCity(){
-        return zipCode + "  " + cityName;
+    public String getCityName(){
+        return cityName;
     }
 
     public String getWeatherConditions() {

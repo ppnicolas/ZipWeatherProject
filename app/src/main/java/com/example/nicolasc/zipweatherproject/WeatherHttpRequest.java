@@ -27,15 +27,23 @@ public class WeatherHttpRequest {
     private static final String REQUEST_ZIP_CODE = "zip=%s";
     private static final String REQUEST_CITY_ID  = "id=%s";
 
-    public String getWeatherInfo( String zipCode) {
-        String regex = "^[0-9]{5}";
-        Matcher matcher = Pattern.compile(regex).matcher(zipCode);
+    public String getWeatherInfo( String value, String type ) {
 
-        if(matcher.matches()){
-            return SendWeatherLocationRequestByZipCode( zipCode );
+        if ("zip".equals(type)) {
+            String regex = "^[0-9]{5}";
+            Matcher matcher = Pattern.compile(regex).matcher(value);
+
+            if (matcher.matches()) {
+                return SendWeatherLocationRequestByZipCode(value);
+            }
+            //invalid zip
+            return null;
         }
-        //invalid zip value
-        return null;
+        else if ("city".equals(type))
+            return SendWeatherLocationRequestByCityId(value);
+        else
+            //invalid type
+            return null;
     }
 
 
