@@ -71,54 +71,42 @@ public class WeatherHttpGetConditionsAsync extends AsyncTask<String, Void, Weath
 
             int cod = jsonResult.getInt("cod");
 
-            if (cod == 200){
+            if (cod == 200) {
 
                 JSONObject coord = jsonResult.getJSONObject("coord");
                 JSONObject sys = jsonResult.getJSONObject("sys");
                 JSONArray weatherArray = jsonResult.getJSONArray("weather");
                 JSONObject weather = weatherArray.getJSONObject(0);
-                //JSONObject base = jsonResult.getJSONObject("base");
 
                 JSONObject main = jsonResult.getJSONObject("main");
                 JSONObject wind = jsonResult.getJSONObject("wind");
                 JSONObject clouds = jsonResult.getJSONObject("clouds");
-                //JSONObject dt = jsonResult.getJSONObject("dt");
-
 
                 String weatherDescription = capitalizeString(weather.getString("description")) +
-                        ". High " + (int)main.getDouble( "temp_max" ) +
-                        "F - Low " + (int)main.getDouble( "temp_min" ) +
+                        ". High " + getTempInFahrenheit(main.getDouble( "temp_max" )) +
+                        "F - Low " + getTempInFahrenheit(main.getDouble( "temp_min" )) +
                         "F. Winds " + getWindDirection(wind.getDouble("deg")) +
                         " at " + getWindSpeed(wind.getDouble("speed")) +  " mph.";
 
-
-                String sunrise = new SimpleDateFormat("h:m a").format(new Date(sys.getLong( "sunrise" )));
-                String sunset = new SimpleDateFormat("h:m a").format(new Date(sys.getLong( "sunset" )));
-
-                //Date lastDate, String zipCode, String cityName, String cityId,
-                //Double latitude, Double longitude,
-                //String currConditions, String currTemperature,
-                //String currCloudiness, String currWindSpeed,
-                //String currPressure, String currHumidity,
-                //String sunriseTime, String sunsetTime
+                String sunrise = new SimpleDateFormat("h:m a").format(new Date(sys.getLong( "sunrise" ) * 1000L));
+                String sunset = new SimpleDateFormat("h:m a").format(new Date(sys.getLong( "sunset" ) * 1000L));
 
                 info = new WeatherInfo( new Date()          //currDate
                         , zipCode                            //zipCode
                         , jsonResult.getString("name")   //lastName
                         , jsonResult.getString( "id" )  //cityId
-                        , "" + coord.getDouble( "lat" )     //latitude
-                        , "" + coord.getDouble( "lon" )    //longitude
+                        , coord.getDouble( "lat" )     //latitude
+                        , coord.getDouble( "lon" )    //longitude
                         , weather.getString( "main" )  //currConditions
                         , weatherDescription
-                        , "" + (int)main.getDouble( "temp" )    //currTemperature
-                        , clouds.getString("all")      //currCloudiness
+                        , "" + getTempInFahrenheit(main.getDouble( "temp" ))    //currTemperature
+                        , clouds.getString("all") + "%"     //currCloudiness
                         , wind.getString("speed") + " m/s"     //currWindSpeed
                         , (int)main.getDouble("pressure") + " hpa"   //currPressure
                         , (int)main.getDouble("humidity") + "%"  //currHumidity
                         , sunrise    //sunriseTime
                         , sunset     //sunsetTime
                 );
-
             }
 
         } catch (JSONException e) {
@@ -159,5 +147,9 @@ public class WeatherHttpGetConditionsAsync extends AsyncTask<String, Void, Weath
 
     private String capitalizeString(final String line) {
         return Character.toUpperCase(line.charAt(0)) + line.substring(1);
+    }
+
+    private int getTempInFahrenheit( Double kelvin) {
+        return (int)( kelvin * 1.8 - 459.67);
     }
 }

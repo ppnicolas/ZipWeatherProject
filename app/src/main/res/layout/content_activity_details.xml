@@ -323,10 +323,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_zip_code"
                 tools:layout_editor_absoluteX="12dp" />
 
-            <com.google.android.gms.maps.MapView
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/mapView"
+                android:name="com.google.android.gms.maps.MapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="400dp" />
 
 
         </LinearLayout>

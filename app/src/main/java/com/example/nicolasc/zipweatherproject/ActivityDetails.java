@@ -12,8 +12,17 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 public class ActivityDetails extends AppCompatActivity
-        implements MenusInterface.ViewInterface, ActivityDetailsInterface.ViewInterface{
+        implements MenusInterface.ViewInterface,
+        ActivityDetailsInterface.ViewInterface,
+        OnMapReadyCallback {
 
     private TextView textConditions;
     private TextView textDescription;
@@ -25,11 +34,18 @@ public class ActivityDetails extends AppCompatActivity
     private TextView textHumidity;
     private TextView textSunrise;
     private TextView textSunset;
+    private MapFragment mapFragment;
 
     private String requestValue = null;
     private String requestType = null;
 
     private ActivityDetailsPresenterImpl presenter;
+
+    private double mapLatitude;
+    private double mapLongitude;
+    private String mapLocation;
+
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +88,8 @@ public class ActivityDetails extends AppCompatActivity
         textHumidity = (TextView) findViewById(R.id.text_humidity);
         textSunrise = (TextView) findViewById(R.id.text_sunrise);
         textSunset = (TextView) findViewById(R.id.text_sunset);
+
+        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.mapView);
     }
 
     @Override
@@ -135,6 +153,13 @@ public class ActivityDetails extends AppCompatActivity
         textHumidity.setText(info.getHumidity());
         textSunrise.setText(info.getSunriseTime());
         textSunset.setText(info.getSunsetTime());
+
+
+        mapLatitude = info.getLatitude();
+        mapLongitude = info.getLongitude();
+        mapLocation = info.getCityName();
+
+        mapFragment.getMapAsync(this);
     }
 
     @Override
@@ -160,6 +185,22 @@ public class ActivityDetails extends AppCompatActivity
     @Override
     public void showToastMessage(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sydney, Australia, and move the camera.
+        //LatLng sydney = new LatLng(-34, 151);
+        LatLng location = new LatLng(mapLatitude, mapLongitude);
+
+        mMap.addMarker(new MarkerOptions().position(location).title(mapLocation));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+
+
     }
 
 }

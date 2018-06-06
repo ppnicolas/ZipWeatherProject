@@ -7,8 +7,8 @@ import java.util.Date;
 public class WeatherInfo {
 
     private Date lastDate;
-    private String latitude;
-    private String longitude;
+    private Double latitude;
+    private Double longitude;
     private String zipCode;
     private String cityName;
     private String cityId;
@@ -27,7 +27,7 @@ public class WeatherInfo {
     }
 
     public WeatherInfo(Date lastDate, String zipCode, String cityName, String cityId,
-                       String latitude, String longitude,
+                       Double latitude, Double longitude,
                        String currConditions, String currDescription,
                        String currTemperature, String currCloudiness,
                        String currWindSpeed, String currPressure, String currHumidity,
@@ -49,8 +49,13 @@ public class WeatherInfo {
         this.sunsetTime = sunsetTime;
     }
 
-    public Pair<Double, Double> getLocation() {
-        return new Pair(latitude, longitude);    }
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
 
     public String getCityId() {
         return cityId;
