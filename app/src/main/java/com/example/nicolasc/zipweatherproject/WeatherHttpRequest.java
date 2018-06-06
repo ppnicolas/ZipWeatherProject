@@ -7,6 +7,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class WeatherHttpRequest {
 
@@ -25,13 +27,14 @@ public class WeatherHttpRequest {
     private static final String REQUEST_ZIP_CODE = "zip=%s";
     private static final String REQUEST_CITY_ID  = "id=%s";
 
-    public String getWeatherInfo( String value, String type) {
-        if ("zip".equals(type.toLowerCase()))
-            return SendWeatherLocationRequestByZipCode( value );
-        else
-        if ("id".equals(type.toLowerCase()))
-            return SendWeatherLocationRequestByCityId( value );
+    public String getWeatherInfo( String zipCode) {
+        String regex = "^[0-9]{5}";
+        Matcher matcher = Pattern.compile(regex).matcher(zipCode);
 
+        if(matcher.matches()){
+            return SendWeatherLocationRequestByZipCode( zipCode );
+        }
+        //invalid zip value
         return null;
     }
 
@@ -48,12 +51,12 @@ public class WeatherHttpRequest {
 
     private String SendHttpRequest( final String url, RequestMethodType requestMethod, String params) {
         String inputLine;
-        String reqresResponse = null;
+        String requesResponse = null;
 
         try {
-            URL reqresGetRequestUrl = new URL( url );
+            URL requesGetRequestUrl = new URL( url );
 
-            HttpURLConnection connection =(HttpURLConnection) reqresGetRequestUrl.openConnection();
+            HttpURLConnection connection =(HttpURLConnection) requesGetRequestUrl.openConnection();
             connection.setReadTimeout(REQUEST_READ_TIMEOUT);
             connection.setConnectTimeout(REQUEST_CONNECTION_TIMEOUT);
 
@@ -81,7 +84,7 @@ public class WeatherHttpRequest {
             reader.close();
             streamReader.close();
 
-            reqresResponse = stringBuilder.toString();
+            requesResponse = stringBuilder.toString();
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -89,6 +92,6 @@ public class WeatherHttpRequest {
             e.printStackTrace();
         }
 
-        return reqresResponse;
+        return requesResponse;
     }
 }

@@ -29,22 +29,9 @@ public class ActivityDetailsPresenterImpl
         WeatherInfo info = null;
 
         if ("zip".equals(requestType)) {
-            info = new WeatherInfo(null,
-                    "33193",
-                    "Miami",
-                    "1001",
-                    200.0,
-                    100.0,
-                    " the weather conditions",
-                    "90",
-                    "Cloudiness",
-                    "2.3",
-                    "1012",
-                    "78",
-                    "6:45 AM",
-                    "7:20 PM"
 
-            );
+            
+
         }
 
         AppGlobals.getInstance().addToRecentSearchesList(info);

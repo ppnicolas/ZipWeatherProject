@@ -7,12 +7,13 @@ import java.util.Date;
 public class WeatherInfo {
 
     private Date lastDate;
-    private Double latitude;
-    private Double longitude;
+    private String latitude;
+    private String longitude;
     private String zipCode;
     private String cityName;
     private String cityId;
     private String currConditions;
+    private String currDescription;
     private String currTemperature;
     private String currCloudiness;
     private String currWindSpeed;
@@ -26,10 +27,10 @@ public class WeatherInfo {
     }
 
     public WeatherInfo(Date lastDate, String zipCode, String cityName, String cityId,
-                       Double latitude, Double longitude,
-                       String currConditions, String currTemperature,
-                       String currCloudiness, String currWindSpeed,
-                       String currPressure, String currHumidity,
+                       String latitude, String longitude,
+                       String currConditions, String currDescription,
+                       String currTemperature, String currCloudiness,
+                       String currWindSpeed, String currPressure, String currHumidity,
                        String sunriseTime, String sunsetTime) {
         this.lastDate = lastDate;
         this.zipCode = zipCode;
@@ -38,6 +39,7 @@ public class WeatherInfo {
         this.latitude = latitude;
         this.longitude = longitude;
         this.currConditions = currConditions;
+        this.currDescription = currDescription;
         this.currTemperature = currTemperature;
         this.currCloudiness = currCloudiness;
         this.currWindSpeed = currWindSpeed;
@@ -98,4 +100,5 @@ public class WeatherInfo {
     public String getSunsetTime() {
         return sunsetTime;
     }
+
 }
