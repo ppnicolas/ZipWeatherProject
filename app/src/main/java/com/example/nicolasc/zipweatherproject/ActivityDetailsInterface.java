@@ -7,6 +7,7 @@ public interface ActivityDetailsInterface {
 
         void onResume();
 
+        void getWeatherInfo(String zipCode, String requestType);
         void showHome();
         void addToFavorites();
 

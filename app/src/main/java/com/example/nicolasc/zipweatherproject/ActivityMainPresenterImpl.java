@@ -23,6 +23,7 @@ public class ActivityMainPresenterImpl
     @Override
     public void onDestroy() {
         mainActivityView = null;
+        context = null;
     }
 
     @Override
