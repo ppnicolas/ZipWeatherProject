@@ -9,7 +9,8 @@ public interface ActivityMainInterface {
 
         void onResume();
 
-        void getWeatherInfo(String zipCode, String type);
+        boolean canGetWeatherInfo();
+
         void clearRecentSearches();
 
         void onDestroy();

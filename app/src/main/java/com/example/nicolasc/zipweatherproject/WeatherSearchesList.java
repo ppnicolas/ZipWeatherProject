@@ -15,11 +15,11 @@ public class WeatherSearchesList {
         return zipSearchesList;
     }
 
-    public void add(WeatherInfo info) {
+    public void addToSearches(WeatherInfo info) {
 
         //zipSearchesList.removeIf(w -> w.getCityId().equals(info.getCityId()) );
 
-        for( int i = zipSearchesList.size(); i > 0; i-- ){
+        for( int i = zipSearchesList.size()-1; i >= 0; i-- ){
             if (zipSearchesList.get(i).getCityId().equals(info.getCityId())){
                 zipSearchesList.remove(i);
             }

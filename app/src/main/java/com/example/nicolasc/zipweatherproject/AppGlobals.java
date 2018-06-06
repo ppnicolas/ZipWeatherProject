@@ -2,6 +2,7 @@ package com.example.nicolasc.zipweatherproject;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class AppGlobals {
     private static AppGlobals instance;
@@ -29,5 +30,29 @@ public class AppGlobals {
         lastSearchDate = oldDate.getTime();
 
         weatherSearchesList = new WeatherSearchesList();
+    }
+
+    public static int getMaxRecentSearches(){
+        return maxRecentSearches;
+    }
+
+    public static void clearRecentSearches() {
+        weatherSearchesList.getRecentSearchesList().clear();
+    }
+
+    public static List<WeatherInfo> getSearchesList(){
+        return weatherSearchesList.getRecentSearchesList();
+    }
+
+    public static WeatherInfo getLastWeatherInfo(){
+        return weatherSearchesList.getRecentSearchesList().get(0);
+    }
+
+    public static Date getLastSearchDate(){
+        return lastSearchDate;
+    }
+
+    public static void addToRecentSearchesList(WeatherInfo info) {
+        weatherSearchesList.addToSearches(info);
     }
 }
