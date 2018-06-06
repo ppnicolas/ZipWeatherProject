@@ -44,8 +44,9 @@ public class ActivityMainPresenterImpl
     public void clearRecentSearches() {
         if (mainActivityView != null){
             //clear recent list
-
+            AppGlobals.getInstance().clearRecentSearches();
             //refresh recent searches list
+            mainActivityView.updateRecentSearches( AppGlobals.getInstance().getSearchesList());
         }
     }
 
