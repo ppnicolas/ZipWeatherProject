@@ -17,67 +17,236 @@ public class WeatherInfoTest {
     }
 
     @Test
-    public void getLatitude() {
-        assertTrue(false);
+    public void testgetLatitude(){
+        final Double input = 100.25;
+        final Double output;
+        final Double expected = input;
+
+        WeatherInfo weatherInfo =  new WeatherInfo(
+                null, "", "", "",
+                input, null,
+                "", "",
+                "", "",
+                "", "", "",
+                "", "");
+
+        output = weatherInfo.getLatitude();
+        assertEquals(output, expected);
     }
 
     @Test
     public void getLongitude() {
-        assertTrue(false);
+        final Double input = 200.25;
+        final Double output;
+        final Double expected = input;
+
+        WeatherInfo weatherInfo =  new WeatherInfo(
+                null, "", "", "",
+                null, input,
+                "", "",
+                "", "",
+                "", "", "",
+                "", "");
+
+        output = weatherInfo.getLongitude();
+        assertEquals(output, expected);
     }
 
     @Test
     public void getCityId() {
-        assertTrue(false);
+        final String input = "CityId";
+        final String output;
+        final String expected = input;
+
+        WeatherInfo weatherInfo =  new WeatherInfo(
+                null, "", "", input,
+                null, null,
+                "", "",
+                "", "",
+                "", "", "",
+                "", "");
+
+        output = weatherInfo.getCityId();
+        assertEquals(output, expected);
     }
 
     @Test
     public void getWeatherDescription() {
-        assertTrue(false);
+        final String input = "Weather Description";
+        final String output;
+        final String expected = input;
+
+        WeatherInfo weatherInfo =  new WeatherInfo(
+                null, "", "", "",
+                null, null,
+                "", input,
+                "", "",
+                "", "", "",
+                "", "");
+
+        output = weatherInfo.getWeatherDescription();
+        assertEquals(output, expected);
     }
 
     @Test
     public void getCityName() {
-        assertTrue(false);
+        final String input = "City Name";
+        final String output;
+        final String expected = input;
+
+        WeatherInfo weatherInfo =  new WeatherInfo(
+                null, "", input, "",
+                null, null,
+                "", "",
+                "", "",
+                "", "", "",
+                "", "");
+
+        output = weatherInfo.getCityName();
+        assertEquals(output, expected);
     }
 
     @Test
     public void getWeatherConditions() {
-        assertTrue(false);
+        final String input = "Weather Conditions";
+        final String output;
+        final String expected = input;
+
+        WeatherInfo weatherInfo =  new WeatherInfo(
+                null, "", "", "",
+                null, null,
+                input, "",
+                "", "",
+                "", "", "",
+                "", "");
+
+        output = weatherInfo.getWeatherConditions();
+        assertEquals(output, expected);
     }
 
     @Test
     public void getTemperature() {
-        assertTrue(false);
+        final String input = "80";
+        final String output;
+        final String expected = input;
+
+        WeatherInfo weatherInfo =  new WeatherInfo(
+                null, "", "", "",
+                null, null,
+                "", "",
+                input, "",
+                "", "", "",
+                "", "");
+
+        output = weatherInfo.getTemperature();
+        assertEquals(output, expected);
     }
 
     @Test
     public void getCloudiness() {
-        assertTrue(false);
+        final String input = "25";
+        final String output;
+        final String expected = input;
+
+        WeatherInfo weatherInfo =  new WeatherInfo(
+                null, "", "", "",
+                null, null,
+                "", "",
+                "", input,
+                "", "", "",
+                "", "");
+
+        output = weatherInfo.getCloudiness();
+        assertEquals(output, expected);
     }
 
     @Test
     public void getWindSpeed() {
-        assertTrue(false);
+        final String input = "1.5";
+        final String output;
+        final String expected = input;
+
+        WeatherInfo weatherInfo =  new WeatherInfo(
+                null, "", "", "",
+                null, null,
+                "", "",
+                "", "",
+                input, "", "",
+                "", "");
+
+        output = weatherInfo.getWindSpeed();
+        assertEquals(output, expected);
     }
 
     @Test
     public void getPressure() {
-        assertTrue(false);
+        final String input = "1.5";
+        final String output;
+        final String expected = input;
+
+        WeatherInfo weatherInfo =  new WeatherInfo(
+                null, "", "", "",
+                null, null,
+                "", "",
+                "", "",
+                "", input, "",
+                "", "");
+
+        output = weatherInfo.getPressure();
+        assertEquals(output, expected);
     }
 
     @Test
     public void getHumidity() {
-        assertTrue(false);
+        final String input = "1.5";
+        final String output;
+        final String expected = input;
+
+        WeatherInfo weatherInfo =  new WeatherInfo(
+                null, "", "", "",
+                null, null,
+                "", "",
+                "", "",
+                "", "", input,
+                "", "");
+
+        output = weatherInfo.getHumidity();
+        assertEquals(output, expected);
     }
 
     @Test
     public void getSunriseTime() {
-        assertTrue(false);
+        final String input = "111111111";
+        final String output;
+        final String expected = input;
+
+        WeatherInfo weatherInfo =  new WeatherInfo(
+                null, "", "", "",
+                null, null,
+                "", "",
+                "", "",
+                "", "", "",
+                input, "");
+
+        output = weatherInfo.getSunriseTime();
+        assertEquals(output, expected);
     }
 
     @Test
     public void getSunsetTime() {
-        assertTrue(false);
+        final String input = "222222222";
+        final String output;
+        final String expected = input;
+
+        WeatherInfo weatherInfo =  new WeatherInfo(
+                null, "", "", "",
+                null, null,
+                "", "",
+                "", "",
+                "", "", "",
+                "", input);
+
+        output = weatherInfo.getSunsetTime();
+        assertEquals(output, expected);
     }
 }
